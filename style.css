@@ -88,6 +88,19 @@ h6 {
   font-size: 1.5rem;
 }
 
+.text {
+  width: 100%;
+  max-width: 1035px;
+  border: 2px solid rgb(159, 159, 159);
+  height: 120px;
+  margin-bottom: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 2.0rem;
+  padding: 5px;
+  transition: 0.2s;
+}
+
 .keyboard-wrapper {
   background-color: rgba(215, 215, 215, 0.8);
   overflow: hidden;
@@ -113,11 +126,42 @@ h6 {
   border-radius: 10px;
   border: 2px solid salmon;
   background-color: white;
+  position: relative;
 }
 
 .keys:first-child,
 .keys:last-child {
   background-color: rgb(255, 232, 232);
+}
+
+.keys:hover,
+.flag:hover {
+  background-color: rgb(198, 214, 255);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+/* .keys:active,
+.flag:active {
+  -webkit-box-shadow: inset 5px -5px 0px 0px #000000; 
+  box-shadow: inset 5px -5px 0px 0px #000000;
+} */
+
+.keys.active {
+  background-color: rgb(255, 123, 123);
+}
+
+.keys.remove {
+  animation: key_animation 0.3s linear;
+}
+
+@keyframes key_animation {
+  0% {
+    background-color: rgb(255, 123, 123);
+  }
+  100% {
+    background-color: white;
+  }
 }
 
 .flag {
@@ -131,6 +175,17 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.sub-keys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin: 4px;
+  font-weight: 400;
+  font-size: 1.4rem;
 }
 
 .backspace {
