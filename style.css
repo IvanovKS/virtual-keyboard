@@ -75,3 +75,71 @@ h6 {
   font-weight: 400;
 }
 /* ------------------------------------------------------------------------------------------ */
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.keyboard-wrapper {
+  background-color: rgba(215, 215, 215, 0.8);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1035px;
+  border-radius: 10px;
+  border: 2px solid rgb(159, 159, 159);
+}
+
+.row {
+  display: flex;
+}
+
+.keys {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  transition: 0.2s;
+  border-radius: 10px;
+  border: 2px solid salmon;
+  background-color: white;
+}
+
+.backspace {
+  width: 147px;
+}
+
+.tab {
+  width: 90px;
+}
+
+.caps {
+  width: 135px;
+}
+
+.enter {
+  width: 135px;
+}
+
+.shift {
+  width: 135px;
+}
+
+.shift-right {
+  width: 69px;
+}
+
+.space {
+  max-width: 490px;
+  width: 100%;
+}
