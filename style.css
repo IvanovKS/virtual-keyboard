@@ -115,6 +115,24 @@ h6 {
   background-color: white;
 }
 
+.keys:first-child,
+.keys:last-child {
+  background-color: rgb(255, 232, 232);
+}
+
+.flag {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid salmon;
+  margin: 4px;
+  background: url(./assets/Square_Flag_of_the_United_Kingdom.svg);
+  background-size: cover;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .backspace {
   width: 147px;
 }
@@ -133,6 +151,7 @@ h6 {
 
 .shift {
   width: 135px;
+  background-color: rgb(255, 232, 232);
 }
 
 .shift-right {
@@ -142,4 +161,14 @@ h6 {
 .space {
   max-width: 490px;
   width: 100%;
+}
+
+.alt,
+.up,
+.left,
+.down,
+.right,
+.ctrl,
+.win {
+  background-color: rgb(255, 232, 232);
 }
