@@ -116,6 +116,7 @@ h6 {
   max-width: 1035px;
   border-radius: 10px;
   border: 2px solid rgb(159, 159, 159);
+  user-select: none;
 }
 
 .row {
@@ -142,8 +143,7 @@ h6 {
 }
 
 .keys:hover {
-  background-color: rgb(198, 214, 255);
-  opacity: 0.5;
+  background-color: rgb(107, 198, 255);
   cursor: pointer;
 }
 
