@@ -1,0 +1,248 @@
+/* ------------------Обнуление CSS-свойств браузеров------------------ */
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 10px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul,
+li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+/* ------------------------------------------------------------------------------------------ */
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  margin: 0 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.text {
+  width: 100%;
+  max-width: 1035px;
+  border: 2px solid rgb(159, 159, 159);
+  height: 120px;
+  margin-bottom: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 2.0rem;
+  padding: 5px;
+  transition: 0.2s;
+  resize: none;
+}
+
+.text::placeholder {
+  color: rgb(255, 123, 123);
+  font-size: 2.0rem;
+  font-style: italic;
+}
+
+.keyboard-wrapper {
+  background-color: rgba(215, 215, 215, 0.8);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 1035px;
+  border-radius: 10px;
+  border: 2px solid rgb(159, 159, 159);
+  user-select: none;
+}
+
+.row {
+  display: flex;
+}
+
+.keys {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  transition: 0.2s;
+  border-radius: 10px;
+  border: 2px solid salmon;
+  background-color: white;
+  position: relative;
+}
+
+.keys:first-child,
+.keys:last-child {
+  background-color: rgb(255, 232, 232);
+}
+
+.keys:hover {
+  background-color: rgb(255, 198, 198);
+  cursor: pointer;
+}
+
+/* .keys:active,
+.flag:active {
+  -webkit-box-shadow: inset 5px -5px 0px 0px #000000; 
+  box-shadow: inset 5px -5px 0px 0px #000000;
+} */
+
+.keys.active {
+  background-color: rgb(255, 123, 123);
+}
+
+.keys.remove {
+  animation: key_animation 0.3s linear;
+}
+
+@keyframes key_animation {
+  0% {
+    background-color: rgb(255, 123, 123);
+  }
+  100% {
+    background-color: white;
+  }
+}
+
+.en {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid salmon;
+  margin: 4px;
+  background: url(./assets/Square_Flag_of_the_United_Kingdom.svg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ru {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid salmon;
+  margin: 4px;
+  background: url(./assets/Flag_of_Russia.svg);
+  background-size: cover;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sub-keys {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin: 4px;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.backspace {
+  width: 147px;
+}
+
+.tab {
+  width: 90px;
+}
+
+.caps {
+  width: 135px;
+}
+
+.enter {
+  width: 135px;
+}
+
+.shift {
+  width: 135px;
+  background-color: rgb(255, 232, 232);
+}
+
+.shift-right {
+  width: 69px;
+}
+
+.space {
+  max-width: 490px;
+  width: 100%;
+}
+
+.alt,
+.up,
+.left,
+.down,
+.right,
+.ctrl,
+.win {
+  background-color: rgb(255, 232, 232);
+}
