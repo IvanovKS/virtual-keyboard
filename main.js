@@ -1,114 +1,115 @@
 const REVERSE_QUOTES = '`';
+const QUOTES = '&quot;';
 const HTML = `
 <main class="wrapper">
 <textarea class="text" cols="30" rows="10" placeholder="&#10004; to change the language use the keyboard shortcut ShiftLeft + AltLeft &#10;&#10004; для смены языка используйте сочетание клавиш ShiftLeft + AltLeft"></textarea>
 <div class="keyboard-wrapper">
   <div class="keyboard-keys">
     <div class="row">
-      <div class="keys" data-symbol="${REVERSE_QUOTES}">${REVERSE_QUOTES}
+      <div class="keys" data-symbol="${REVERSE_QUOTES}" data-subsymbol="~">${REVERSE_QUOTES}
         <div class="sub-keys">~</div>
       </div>
-      <div class="keys" data-number="1">1
+      <div class="keys" data-number="1" data-subsymbol="!">1
         <p class="sub-keys">!</p>
       </div>
-      <div class="keys" data-number="2">2
+      <div class="keys" data-number="2" data-subsymbol="@">2
         <div class="sub-keys">@</div>
       </div>
-      <div class="keys" data-number="3">3
+      <div class="keys" data-number="3" data-subsymbol="#">3
         <div class="sub-keys">#</div>
       </div>
-      <div class="keys" data-number="4">4
+      <div class="keys" data-number="4" data-subsymbol="$">4
         <div class="sub-keys">$</div>
       </div>
-      <div class="keys" data-number="5">5
+      <div class="keys" data-number="5" data-subsymbol="%">5
         <div class="sub-keys">%</div>
       </div>
-      <div class="keys" data-number="6">6
+      <div class="keys" data-number="6" data-subsymbol="^">6
         <div class="sub-keys">^</div>
       </div>
-      <div class="keys" data-number="7">7
+      <div class="keys" data-number="7" data-subsymbol="&">7
         <div class="sub-keys">&</div>
       </div>
-      <div class="keys" data-number="8">8
+      <div class="keys" data-number="8" data-subsymbol="*">8
         <div class="sub-keys">*</div>
       </div>
-      <div class="keys" data-number="9">9
+      <div class="keys" data-number="9" data-subsymbol="(">9
         <div class="sub-keys">(</div>
       </div>
-      <div class="keys" data-number="0">0
+      <div class="keys" data-number="0" data-subsymbol=")">0
         <div class="sub-keys">)</div>
       </div>
-      <div class="keys" data-symbol="-">-
+      <div class="keys" data-symbol="-" data-subsymbol="_">-
         <div class="sub-keys">_</div>
       </div>
-      <div class="keys" data-symbol="=">=
+      <div class="keys" data-symbol="=" data-subsymbol="+">=
         <div class="sub-keys">+</div>
       </div>
       <div class="keys backspace">Backspace</div>
     </div>
     <div class="row">
       <div class="keys tab">Tab</div>
-      <div class="keys">Q</div>
-      <div class="keys">W</div>
-      <div class="keys">E</div>
-      <div class="keys">R</div>
-      <div class="keys">T</div>
-      <div class="keys">Y</div>
-      <div class="keys">U</div>
-      <div class="keys">I</div>
-      <div class="keys">O</div>
-      <div class="keys">P</div>
-      <div class="keys" data-symbol="[">[
+      <div class="keys lang-Q" data-eng="Q">Q</div>
+      <div class="keys lang-W" data-eng="W">W</div>
+      <div class="keys lang-E" data-eng="E">E</div>
+      <div class="keys lang-R" data-eng="R">R</div>
+      <div class="keys lang-T" data-eng="T">T</div>
+      <div class="keys lang-Y" data-eng="Y">Y</div>
+      <div class="keys lang-U" data-eng="U">U</div>
+      <div class="keys lang-I" data-eng="I">I</div>
+      <div class="keys lang-O" data-eng="O">O</div>
+      <div class="keys lang-P" data-eng="P">P</div>
+      <div class="keys" data-symbol="[" data-subsymbol="{">[
         <div class="sub-keys">{</div>
       </div>
-      <div class="keys" data-symbol="]">]
+      <div class="keys" data-symbol="]" data-subsymbol="}">]
         <div class="sub-keys">}</div>
       </div>
-      <div class="keys backslash">&#92;
+      <div class="keys backslash" data-symbol="&#92;">&#92;
         <div class="sub-keys">|</div>
       </div>
       <div class="keys delete">Del</div>
     </div>
     <div class="row">
       <div class="keys caps">Caps Lock</div>
-      <div class="keys">A</div>
-      <div class="keys">S</div>
-      <div class="keys">D</div>
-      <div class="keys">F</div>
-      <div class="keys">G</div>
-      <div class="keys">H</div>
-      <div class="keys">J</div>
-      <div class="keys">K</div>
-      <div class="keys">L</div>
-      <div class="keys" data-symbol=";">;
+      <div class="keys" data-eng="A">A</div>
+      <div class="keys" data-eng="S">S</div>
+      <div class="keys" data-eng="D">D</div>
+      <div class="keys" data-eng="F">F</div>
+      <div class="keys" data-eng="G">G</div>
+      <div class="keys" data-eng="H">H</div>
+      <div class="keys" data-eng="J">J</div>
+      <div class="keys" data-eng="K">K</div>
+      <div class="keys" data-eng="L">L</div>
+      <div class="keys" data-symbol=";" data-subsymbol=":">;
         <div class="sub-keys">:</div>
       </div>
-      <div class="keys" data-symbol="'">'
+      <div class="keys" data-symbol="'" data-subsymbol="${QUOTES}">'
         <div class="sub-keys">"</div>
       </div>
       <div class="keys enter">Enter</div>
     </div>
     <div class="row">
       <div class="keys shift shift-left">Shift</div>
-      <div class="keys">Z</div>
-      <div class="keys">X</div>
-      <div class="keys">C</div>
-      <div class="keys">V</div>
-      <div class="keys">B</div>
-      <div class="keys">N</div>
-      <div class="keys">M</div>
-      <div class="keys" data-symbol=",">,
+      <div class="keys" data-eng="Z">Z</div>
+      <div class="keys" data-eng="X">X</div>
+      <div class="keys" data-eng="C">C</div>
+      <div class="keys" data-eng="V">V</div>
+      <div class="keys" data-eng="B">B</div>
+      <div class="keys" data-eng="N">N</div>
+      <div class="keys" data-eng="M">M</div>
+      <div class="keys" data-symbol="," data-subsymbol="&lt;">,
         <div class="sub-keys">&lt;</div>
       </div>
-      <div class="keys" data-symbol=".">.
+      <div class="keys" data-symbol="." data-subsymbol="&gt;">.
         <div class="sub-keys">&gt;</div>
       </div>
-      <div class="keys" data-symbol="/">/
+      <div class="keys" data-symbol="/" data-subsymbol="?">/
         <div class="sub-keys">?</div>
       </div>
       <div class="keys shift shift-right">Shift</div>
       <div class="keys up">Up</div>
-      <div class="flag">
+      <div id="flag" class="en">
       </div>
     </div>
     <div class="row">
@@ -151,10 +152,12 @@ const ALT_LEFT = document.querySelector('.alt-left');
 const ALT_RIGHT = document.querySelector('.alt-right');
 const CTRL_LEFT = document.querySelector('.ctrl-left');
 const CTRL_RIGHT = document.querySelector('.ctrl-right');
-const FLAG = document.querySelector('.flag');
+const FLAG = document.getElementById('flag');
 const TEXT = document.querySelector('.text');
 const NUMBERS = document.querySelectorAll('[data-number]');
 const SYMBOLS = document.querySelectorAll('[data-symbol]');
+const SUBSYMBOLS = document.querySelectorAll('[data-subsymbol]');
+const DATA_ENG = document.querySelectorAll('[data-eng]');
 // -----------------------------------------------------------------------
 
 // * Focus onload page----------------------------------------------------
@@ -216,9 +219,12 @@ window.addEventListener('keydown', function(el) {
     if (el.code === 'ControlRight') {
       CTRL_RIGHT.classList.add('active');
     }
-    if (el.code === 'CapsLock') {
-      CAPS.classList.toggle('active');
-    }
+  }
+})
+
+window.addEventListener('keydown', function(el) {
+  if (el.key === 'CapsLock') {
+    CAPS.classList.toggle('active');
   }
 })
 
@@ -234,6 +240,14 @@ window.addEventListener('keydown', function(el) {
   for (let i = 0; i < SYMBOLS.length; i++) {
     if (el.key === SYMBOLS[i].getAttribute('data-symbol')) {
       SYMBOLS[i].classList.add('active');
+    }
+  }
+})
+
+window.addEventListener('keydown', function(el) {
+  for (let i = 0; i < SUBSYMBOLS.length; i++) {
+    if (el.key === SUBSYMBOLS[i].getAttribute('data-subsymbol')) {
+      SUBSYMBOLS[i].classList.add('active');
     }
   }
 })
@@ -329,6 +343,18 @@ window.addEventListener('keyup', function(el) {
     }, 100);
   }
 })
+
+window.addEventListener('keyup', function(el) {
+  for (let i = 0; i < SUBSYMBOLS.length; i++) {
+    if (el.key === SUBSYMBOLS[i].getAttribute('data-subsymbol')) {
+      SUBSYMBOLS[i].classList.remove('active');
+      SUBSYMBOLS[i].classList.add('remove');
+    }
+    this.setTimeout(() => {
+      SUBSYMBOLS[i].classList.remove('remove')
+    }, 100);
+  }
+})
 // -----------------------------------------------------------------------
 
 // * preventDefault-------------------------------------------------------
@@ -351,19 +377,169 @@ TEXT.addEventListener('keydown', function(event) {
     this.setSelectionRange(cursorPosition + 4, cursorPosition + 4);
   }
 });
+// -----------------------------------------------------------------------
 
-// console.log(KEYS_ARRAY)
+// * Click on buttons-----------------------------------------------------
+document.addEventListener('click', function(event) {
+  if (!TEXT.contains(event.target)) {
+    TEXT.focus();
+  }
+});
 
+CAPS.addEventListener('click', function() {
+  CAPS.classList.toggle('active');
+})
 
-KEYS_ARRAY.forEach(function(el) {
-  el.addEventListener('click', function(event) {
-    // let value = event.target.getAttribute('data-value');
+NUMBERS.forEach(function(el) {
+  el.addEventListener('click', function() {
     el.classList.add('active');
     setTimeout(() => {
       el.classList.remove('active')
-    }, 300);
-    let value = el.textContent;
-    TEXT.value += value.toLocaleLowerCase();
+    }, 150);
+    let value = el.getAttribute('data-number');
+    TEXT.value += value;
   });
 });
+
+SYMBOLS.forEach(function(el) {
+  el.addEventListener('click', function() {
+    el.classList.add('active');
+    setTimeout(() => {
+      el.classList.remove('active')
+    }, 150);
+    let value = el.getAttribute('data-symbol');
+    TEXT.value += value;
+  });
+});
+
+DATA_ENG.forEach(function(el) {
+  el.addEventListener('click', function() {
+    el.classList.add('active');
+    setTimeout(() => {
+      el.classList.remove('active')
+    }, 150);
+    let value = el.getAttribute('data-eng');
+    if (CAPS.classList.contains('active')) {
+      TEXT.value += value;
+    } else {
+      TEXT.value += value.toLowerCase();
+    }
+  });
+});
+
+BACKSPACE.addEventListener('click', () => {
+  BACKSPACE.classList.add('active');
+  let value = TEXT.value;
+  value = value.substring(0, value.length - 1);
+  TEXT.value = value;
+  setTimeout(() => {
+    BACKSPACE.classList.remove('active')
+  }, 150);
+});
+
+DELETE.addEventListener('click', () => {
+  DELETE.classList.add('active');
+  const cursorPos = TEXT.selectionStart;
+  let text = TEXT.value;
+  text = text.slice(0, cursorPos) + text.slice(cursorPos + 1);
+  TEXT.value = text;
+  TEXT.selectionStart = cursorPos;
+  TEXT.selectionEnd = cursorPos;
+  setTimeout(() => {
+    DELETE.classList.remove('active')
+  }, 150);
+});
+
+ENTER.addEventListener('click', () => {
+  ENTER.classList.add('active');
+  TEXT.value += '\n';
+  setTimeout(() => {
+    ENTER.classList.remove('active')
+  }, 150);
+});
+
+SPACE.addEventListener('click', () => {
+  SPACE.classList.add('active');
+  TEXT.value += ' ';
+  setTimeout(() => {
+    SPACE.classList.remove('active')
+  }, 150);
+});
+
+RIGHT.addEventListener('click', () => {
+  RIGHT.classList.add('active');
+  const currentPosition = TEXT.selectionStart;
+  TEXT.setSelectionRange(currentPosition + 1, currentPosition + 1);
+  TEXT.focus();
+  setTimeout(() => {
+    RIGHT.classList.remove('active')
+  }, 150);
+});
+
+LEFT.addEventListener('click', () => {
+  LEFT.classList.add('active');
+  let pos = TEXT.selectionStart;
+  if (pos > 0) {
+    TEXT.selectionStart = pos - 1;
+    TEXT.selectionEnd = pos - 1;
+  }
+  TEXT.focus();
+  setTimeout(() => {
+    LEFT.classList.remove('active')
+  }, 150);
+});
+
+DOWN.addEventListener('click', () => {
+  DOWN.classList.add('active');
+  let currentPosition = TEXT.selectionStart;
+  let currentLine = TEXT.value.substr(0, currentPosition).split("\n").length - 1;
+  let lines = TEXT.value.split("\n");
+  let nextLineIndex = lines[currentLine].length + 1;
+  TEXT.setSelectionRange(currentPosition + nextLineIndex, currentPosition + nextLineIndex);
+  setTimeout(() => {
+    DOWN.classList.remove('active')
+  }, 150);
+});
+
+UP.addEventListener('click', () => {
+  UP.classList.add('active');
+  setTimeout(() => {
+      UP.classList.remove('active')
+    }, 150);
+  let currentPosition = TEXT.selectionStart;
+  let currentLine = TEXT.value.substr(0, currentPosition).split("\n").length - 1;
+  let lines = TEXT.value.split("\n");
+  let prevLine = lines[currentLine - 1];
+  let prevLinePosition = prevLine.length;
+  if (prevLinePosition > currentPosition) {
+    prevLinePosition = currentPosition;
+  }
+  let newPosition = TEXT.value.substr(0, TEXT.value.indexOf(prevLine)) + prevLine.substr(0, prevLinePosition);
+  TEXT.setSelectionRange(newPosition.length, newPosition.length);
+});
+
+TAB.addEventListener('click', () => {
+  TAB.classList.add('active');
+  const cursorPos = TEXT.selectionStart;
+  const newCursorPos = cursorPos + 4;
+  TEXT.value = TEXT.value.slice(0, cursorPos) + '    ' + TEXT.value.slice(cursorPos);
+  TEXT.selectionStart = newCursorPos;
+  TEXT.selectionEnd = newCursorPos;
+  setTimeout(() => {
+    TAB.classList.remove('active')
+  }, 150);
+});
+
+
+// KEYS_ARRAY.forEach(function(el) {
+//   el.addEventListener('click', function(event) {
+//     // let value = event.target.getAttribute('data-value');
+//     el.classList.add('active');
+//     setTimeout(() => {
+//       el.classList.remove('active')
+//     }, 100);
+//     let value = el.textContent;
+//     TEXT.value += value.toLocaleLowerCase();
+//   });
+// });
 
