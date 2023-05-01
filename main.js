@@ -1,47 +1,47 @@
 const REVERSE_QUOTES = '`';
 const HTML = `
 <main class="wrapper">
-<textarea class="text" cols="30" rows="10" placeholder="&#10004; to change the language use the keyboard shortcut Shift + Alt &#10;&#10004; для смены языка используйте сочетание клавиш Shift + Alt"></textarea>
+<textarea class="text" cols="30" rows="10" placeholder="&#10004; to change the language use the keyboard shortcut ShiftLeft + AltLeft &#10;&#10004; для смены языка используйте сочетание клавиш ShiftLeft + AltLeft"></textarea>
 <div class="keyboard-wrapper">
   <div class="keyboard-keys">
     <div class="row">
-      <div class="keys">${REVERSE_QUOTES}
+      <div class="keys" data-symbol="${REVERSE_QUOTES}">${REVERSE_QUOTES}
         <div class="sub-keys">~</div>
       </div>
-      <div class="keys">1
-        <div class="sub-keys">!</div>
+      <div class="keys" data-number="1">1
+        <p class="sub-keys">!</p>
       </div>
-      <div class="keys">2
+      <div class="keys" data-number="2">2
         <div class="sub-keys">@</div>
       </div>
-      <div class="keys">3
+      <div class="keys" data-number="3">3
         <div class="sub-keys">#</div>
       </div>
-      <div class="keys">4
+      <div class="keys" data-number="4">4
         <div class="sub-keys">$</div>
       </div>
-      <div class="keys">5
+      <div class="keys" data-number="5">5
         <div class="sub-keys">%</div>
       </div>
-      <div class="keys">6
+      <div class="keys" data-number="6">6
         <div class="sub-keys">^</div>
       </div>
-      <div class="keys">7
+      <div class="keys" data-number="7">7
         <div class="sub-keys">&</div>
       </div>
-      <div class="keys">8
+      <div class="keys" data-number="8">8
         <div class="sub-keys">*</div>
       </div>
-      <div class="keys">9
+      <div class="keys" data-number="9">9
         <div class="sub-keys">(</div>
       </div>
-      <div class="keys">0
+      <div class="keys" data-number="0">0
         <div class="sub-keys">)</div>
       </div>
-      <div class="keys">-
+      <div class="keys" data-symbol="-">-
         <div class="sub-keys">_</div>
       </div>
-      <div class="keys">=
+      <div class="keys" data-symbol="=">=
         <div class="sub-keys">+</div>
       </div>
       <div class="keys backspace">Backspace</div>
@@ -58,10 +58,10 @@ const HTML = `
       <div class="keys">I</div>
       <div class="keys">O</div>
       <div class="keys">P</div>
-      <div class="keys">[
+      <div class="keys" data-symbol="[">[
         <div class="sub-keys">{</div>
       </div>
-      <div class="keys">]
+      <div class="keys" data-symbol="]">]
         <div class="sub-keys">}</div>
       </div>
       <div class="keys backslash">&#92;
@@ -80,10 +80,10 @@ const HTML = `
       <div class="keys">J</div>
       <div class="keys">K</div>
       <div class="keys">L</div>
-      <div class="keys">;
+      <div class="keys" data-symbol=";">;
         <div class="sub-keys">:</div>
       </div>
-      <div class="keys">'
+      <div class="keys" data-symbol="'">'
         <div class="sub-keys">"</div>
       </div>
       <div class="keys enter">Enter</div>
@@ -97,13 +97,13 @@ const HTML = `
       <div class="keys">B</div>
       <div class="keys">N</div>
       <div class="keys">M</div>
-      <div class="keys">,
+      <div class="keys" data-symbol=",">,
         <div class="sub-keys">&lt;</div>
       </div>
-      <div class="keys">.
+      <div class="keys" data-symbol=".">.
         <div class="sub-keys">&gt;</div>
       </div>
-      <div class="keys">/
+      <div class="keys" data-symbol="/">/
         <div class="sub-keys">?</div>
       </div>
       <div class="keys shift shift-right">Shift</div>
@@ -132,6 +132,7 @@ document.body.innerHTML = HTML;
 
 // * Variables -----------------------------------------------------------
 const KEYS = document.querySelectorAll('.keys');
+const KEYS_ARRAY = Array.from(document.querySelectorAll('.keys'));
 const BACKSPACE = document.querySelector('.backspace');
 const TAB = document.querySelector('.tab');
 const BACKSLASH = document.querySelector('.backslash');
@@ -152,6 +153,8 @@ const CTRL_LEFT = document.querySelector('.ctrl-left');
 const CTRL_RIGHT = document.querySelector('.ctrl-right');
 const FLAG = document.querySelector('.flag');
 const TEXT = document.querySelector('.text');
+const NUMBERS = document.querySelectorAll('[data-number]');
+const SYMBOLS = document.querySelectorAll('[data-symbol]');
 // -----------------------------------------------------------------------
 
 // * Focus onload page----------------------------------------------------
@@ -160,7 +163,7 @@ window.onload = () => {
 }
 // -----------------------------------------------------------------------
 
-// * ??????????????----------------------------------------------------
+// * keydown and keyup----------------------------------------------------
 for (let i = 0; i < KEYS.length; i++) {
   KEYS[i].setAttribute('keyValue', KEYS[i].innerText);
   KEYS[i].setAttribute('lowerCaseValue', KEYS[i].innerText.toLowerCase());
@@ -192,6 +195,9 @@ window.addEventListener('keydown', function(el) {
     if (el.code === 'Backslash') {
       BACKSLASH.classList.add('active');
     }
+    if (el.code === 'MetaLeft' || el.code === 'OSLeft') {
+      WIN.classList.add('active');
+    }
     if (el.code === 'ShiftLeft') {
       SHIFT_RIGHT.classList.remove('active');
     }
@@ -211,7 +217,23 @@ window.addEventListener('keydown', function(el) {
       CTRL_RIGHT.classList.add('active');
     }
     if (el.code === 'CapsLock') {
-      RIGHT.classList.toggle('active');
+      CAPS.classList.toggle('active');
+    }
+  }
+})
+
+window.addEventListener('keydown', function(el) {
+  for (let i = 0; i < NUMBERS.length; i++) {
+    if (el.key === NUMBERS[i].getAttribute('data-number')) {
+      NUMBERS[i].classList.add('active');
+    }
+  }
+})
+
+window.addEventListener('keydown', function(el) {
+  for (let i = 0; i < SYMBOLS.length; i++) {
+    if (el.key === SYMBOLS[i].getAttribute('data-symbol')) {
+      SYMBOLS[i].classList.add('active');
     }
   }
 })
@@ -250,6 +272,10 @@ window.addEventListener('keyup', function(el) {
       BACKSLASH.classList.remove('active');
       BACKSLASH.classList.add('remove');
     }
+    if (el.code === 'MetaLeft' || el.code === 'OSLeft') {
+      WIN.classList.remove('active');
+      WIN.classList.add('remove');
+    }
     if (el.code === 'ControlLeft') {
       CTRL_LEFT.classList.remove('active');
       CTRL_LEFT.classList.add('remove');
@@ -274,5 +300,70 @@ window.addEventListener('keyup', function(el) {
       ALT_LEFT.classList.remove('active');
       ALT_LEFT.classList.remove('remove');
     }
+    this.setTimeout(() => {
+      KEYS[i].classList.remove('remove')
+    }, 100);
   }
 })
+
+window.addEventListener('keyup', function(el) {
+  for (let i = 0; i < NUMBERS.length; i++) {
+    if (el.key === NUMBERS[i].getAttribute('data-number')) {
+      NUMBERS[i].classList.remove('active');
+      NUMBERS[i].classList.add('remove');
+    }
+    this.setTimeout(() => {
+      NUMBERS[i].classList.remove('remove')
+    }, 100);
+  }
+})
+
+window.addEventListener('keyup', function(el) {
+  for (let i = 0; i < SYMBOLS.length; i++) {
+    if (el.key === SYMBOLS[i].getAttribute('data-symbol')) {
+      SYMBOLS[i].classList.remove('active');
+      SYMBOLS[i].classList.add('remove');
+    }
+    this.setTimeout(() => {
+      SYMBOLS[i].classList.remove('remove')
+    }, 100);
+  }
+})
+// -----------------------------------------------------------------------
+
+// * preventDefault-------------------------------------------------------
+document.addEventListener('keydown', function(event) {
+  let keyCode = event.code;
+  if (keyCode === 'AltLeft' || keyCode === 'AltRight') {
+    event.preventDefault();
+  }
+  if (keyCode === 'ControlLeft' || keyCode === 'ControlRight') {
+    event.preventDefault();
+  }
+});
+
+TEXT.addEventListener('keydown', function(event) {
+  if (event.code === 'Tab') {
+    event.preventDefault();
+    const cursorPosition = this.selectionStart;
+    const spaces = '    ';
+    this.value = this.value.substring(0, cursorPosition) + spaces + this.value.substring(cursorPosition);
+    this.setSelectionRange(cursorPosition + 4, cursorPosition + 4);
+  }
+});
+
+// console.log(KEYS_ARRAY)
+
+
+KEYS_ARRAY.forEach(function(el) {
+  el.addEventListener('click', function(event) {
+    // let value = event.target.getAttribute('data-value');
+    el.classList.add('active');
+    setTimeout(() => {
+      el.classList.remove('active')
+    }, 300);
+    let value = el.textContent;
+    TEXT.value += value.toLocaleLowerCase();
+  });
+});
+
