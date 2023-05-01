@@ -1,8 +1,8 @@
 const REVERSE_QUOTES = '`';
 const QUOTES = '&quot;';
 const HTML = `
-<main class="wrapper">
-<textarea class="text" cols="30" rows="10" placeholder="&#10004; to change the language use the keyboard shortcut ShiftLeft + AltLeft &#10;&#10004; для смены языка используйте сочетание клавиш ShiftLeft + AltLeft"></textarea>
+<main id="wrapper" class="wrapper" data-lang="ru">
+<textarea class="text" cols="30" rows="10" placeholder="&#10004; to change the language use the keyboard shortcut Ctrl + Alt &#10;&#10004; для смены языка используйте сочетание клавиш Ctrl + Alt"></textarea>
 <div class="keyboard-wrapper">
   <div class="keyboard-keys">
     <div class="row">
@@ -59,7 +59,7 @@ const HTML = `
       <div class="keys lang-I" data-eng="I">I</div>
       <div class="keys lang-O" data-eng="O">O</div>
       <div class="keys lang-P" data-eng="P">P</div>
-      <div class="keys" data-symbol="[" data-subsymbol="{">[
+      <div class="keys" data-rus="x" data-symbol="[" data-subsymbol="{">[
         <div class="sub-keys">{</div>
       </div>
       <div class="keys" data-symbol="]" data-subsymbol="}">]
@@ -153,11 +153,154 @@ const ALT_RIGHT = document.querySelector('.alt-right');
 const CTRL_LEFT = document.querySelector('.ctrl-left');
 const CTRL_RIGHT = document.querySelector('.ctrl-right');
 const FLAG = document.getElementById('flag');
+const WRAPPER = document.getElementById('wrapper');
 const TEXT = document.querySelector('.text');
 const NUMBERS = document.querySelectorAll('[data-number]');
 const SYMBOLS = document.querySelectorAll('[data-symbol]');
 const SUBSYMBOLS = document.querySelectorAll('[data-subsymbol]');
 const DATA_ENG = document.querySelectorAll('[data-eng]');
+
+const langSymbol = {
+  "x": {
+    en: "[",
+    ru: "Х",
+  },
+  // "]": {
+  //   en: "]",
+  //   ru: "Ъ",
+  // },
+}
+
+const langText = {
+  "Q": {
+    en: "Q",
+    ru: "Й",
+  },
+  "W": {
+    en: "W",
+    ru: "Ц",
+  },
+  "E": {
+    en: "E",
+    ru: "У",
+  },
+  "R": {
+    en: "R",
+    ru: "К",
+  },
+  "T": {
+    en: "T",
+    ru: "Е",
+  },
+  "Y": {
+    en: "Y",
+    ru: "Н",
+  },
+  "U": {
+    en: "U",
+    ru: "Г",
+  },
+  "I": {
+    en: "I",
+    ru: "Ш",
+  },
+  "O": {
+    en: "O",
+    ru: "Щ",
+  },
+  "P": {
+    en: "P",
+    ru: "З",
+  },
+  // "[": {
+  //   en: "[",
+  //   ru: "Х",
+  // },
+  // "]": {
+  //   en: "]",
+  //   ru: "Ъ",
+  // },
+  "A": {
+    en: "A",
+    ru: "Ф",
+  },
+  "S": {
+    en: "S",
+    ru: "Ы",
+  },
+  "D": {
+    en: "D",
+    ru: "В",
+  },
+  "F": {
+    en: "F",
+    ru: "А",
+  },
+  "G": {
+    en: "G",
+    ru: "П",
+  },
+  "H": {
+    en: "H",
+    ru: "Р",
+  },
+  "J": {
+    en: "J",
+    ru: "О",
+  },
+  "K": {
+    en: "K",
+    ru: "Л",
+  },
+  "L": {
+    en: "L",
+    ru: "Д",
+  },
+  // ";": {
+  //   en: ";",
+  //   ru: "Ж",
+  // },
+  // "'": {
+  //   en: "'",
+  //   ru: "Э",
+  // },
+  "Z": {
+    en: "Z",
+    ru: "Я",
+  },
+  "X": {
+    en: "X",
+    ru: "Ч",
+  },
+  "C": {
+    en: "C",
+    ru: "C",
+  },
+  "V": {
+    en: "V",
+    ru: "М",
+  },
+  "B": {
+    en: "B",
+    ru: "И",
+  },
+  "N": {
+    en: "N",
+    ru: "Т",
+  },
+  "M": {
+    en: "M",
+    ru: "Ь",
+  },
+  // ",": {
+  //   en: ",",
+  //   ru: "Б",
+  // },
+  // ".": {
+  //   en: ".",
+  //   ru: "Ю",
+  // },
+}
 // -----------------------------------------------------------------------
 
 // * Focus onload page----------------------------------------------------
@@ -390,14 +533,26 @@ CAPS.addEventListener('click', function() {
   CAPS.classList.toggle('active');
 })
 
+SUBSYMBOLS.forEach(function(el) {
+  el.addEventListener('click', function() {
+    if (SHIFT_LEFT.classList.contains('active') || SHIFT_RIGHT.classList.contains('active')) {
+      let value = el.getAttribute('data-subsymbol');
+      value = value.split('');
+      TEXT.value += value[0];
+    }
+  });
+});
+
 NUMBERS.forEach(function(el) {
   el.addEventListener('click', function() {
     el.classList.add('active');
     setTimeout(() => {
       el.classList.remove('active')
     }, 150);
-    let value = el.getAttribute('data-number');
-    TEXT.value += value;
+    if (!SHIFT_LEFT.classList.contains('active')) {
+      let value = el.getAttribute('data-number');
+      TEXT.value += value;
+    }
   });
 });
 
@@ -407,8 +562,10 @@ SYMBOLS.forEach(function(el) {
     setTimeout(() => {
       el.classList.remove('active')
     }, 150);
-    let value = el.getAttribute('data-symbol');
-    TEXT.value += value;
+    if (!SHIFT_LEFT.classList.contains('active')) {
+      let value = el.getAttribute('data-symbol');
+      TEXT.value += value;
+    };
   });
 });
 
@@ -418,7 +575,7 @@ DATA_ENG.forEach(function(el) {
     setTimeout(() => {
       el.classList.remove('active')
     }, 150);
-    let value = el.getAttribute('data-eng');
+    let value = el.textContent[0];
     if (CAPS.classList.contains('active')) {
       TEXT.value += value;
     } else {
@@ -529,17 +686,40 @@ TAB.addEventListener('click', () => {
     TAB.classList.remove('active')
   }, 150);
 });
+// -----------------------------------------------------------------------
 
+// * Change language------------------------------------------------------
+const allLang = ['en', 'ru'];
+let currentLang = 'en';
+// const currentPathName = window.location.pathname;
+// let currentText = {};
 
-// KEYS_ARRAY.forEach(function(el) {
-//   el.addEventListener('click', function(event) {
-//     // let value = event.target.getAttribute('data-value');
-//     el.classList.add('active');
-//     setTimeout(() => {
-//       el.classList.remove('active')
-//     }, 100);
-//     let value = el.textContent;
-//     TEXT.value += value.toLocaleLowerCase();
-//   });
-// });
+document.addEventListener("keydown", function(event) {
+  if (event.ctrlKey && event.altKey) {
+    WRAPPER.classList.toggle('rus');
+    if (WRAPPER.classList.contains('rus')) {
+      FLAG.style.backgroundImage = "url('./assets/Flag_of_Russia.svg')";
+      WRAPPER.dataset.lang = 'ru';
+      currentLang = WRAPPER.dataset.lang;
+      changeLang();
+    } else {
+      FLAG.style.backgroundImage = "url('./assets/Square_Flag_of_the_United_Kingdom.svg')";
+      WRAPPER.dataset.lang = 'en';
+      currentLang = WRAPPER.dataset.lang;
+      changeLang();
+    };
+  }
+});
 
+function changeLang() {
+  for (const key in langText) {
+    const elem = document.querySelector(`[data-eng=${key}]`)
+    if(elem) {
+      elem.textContent = langText[key][currentLang];
+    }
+  }
+
+}
+changeLang();
+
+console.log(Array.from(SYMBOLS))
