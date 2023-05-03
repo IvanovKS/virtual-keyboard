@@ -133,7 +133,7 @@ document.body.innerHTML = HTML;
 
 // * Variables -----------------------------------------------------------
 const KEYS = document.querySelectorAll('.keys');
-const KEYS_ARRAY = Array.from(document.querySelectorAll('.keys'));
+// const KEYS_ARRAY = Array.from(document.querySelectorAll('.keys'));
 const BACKSPACE = document.querySelector('.backspace');
 const TAB = document.querySelector('.tab');
 const BACKSLASH = document.querySelector('.backslash');
@@ -160,16 +160,16 @@ const SYMBOLS = document.querySelectorAll('[data-symbol]');
 const SUBSYMBOLS = document.querySelectorAll('[data-subsymbol]');
 const DATA_ENG = document.querySelectorAll('[data-eng]');
 
-const langSymbol = {
-  "x": {
-    en: "[",
-    ru: "Х",
-  },
-  // "]": {
-  //   en: "]",
-  //   ru: "Ъ",
-  // },
-}
+// const langSymbol = {
+//   "x": {
+//     en: "[",
+//     ru: "Х",
+//   },
+//   // "]": {
+//   //   en: "]",
+//   //   ru: "Ъ",
+//   // },
+// }
 
 const langText = {
   "Q": {
@@ -565,7 +565,7 @@ SYMBOLS.forEach(function(el) {
     if (!SHIFT_LEFT.classList.contains('active')) {
       let value = el.getAttribute('data-symbol');
       TEXT.value += value;
-    };
+    }
   });
 });
 
@@ -689,7 +689,7 @@ TAB.addEventListener('click', () => {
 // -----------------------------------------------------------------------
 
 // * Change language------------------------------------------------------
-const allLang = ['en', 'ru'];
+// const allLang = ['en', 'ru'];
 let currentLang = 'en';
 // const currentPathName = window.location.pathname;
 // let currentText = {};
@@ -707,7 +707,7 @@ document.addEventListener("keydown", function(event) {
       WRAPPER.dataset.lang = 'en';
       currentLang = WRAPPER.dataset.lang;
       changeLang();
-    };
+    }
   }
 });
 
